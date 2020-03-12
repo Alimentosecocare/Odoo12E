@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+  <data>
+
+    <template id="report_invoice_inherit" inherit_id="account.report_invoice_document">
+      <xpath expr="//div[@class='page']//table[@class='table table-condensed']//thead//tr//th[4]" position="after">
+        <th t-if="display_discount" class="text-right">Disc. Type</th>
+      </xpath>
+      <xpath expr="//div[@class='page']//table[@class='table table-condensed']//thead//tr//th[6]" position="replace">
+        <th t-if="display_discount" class="text-right">Disc.</th>
+      </xpath>
+            <xpath expr="//tbody[@class='invoice_tbody']//tr//td[4]" position="after">
+        <td t-if="display_discount" class="text-right">
+                    <span t-field="l.discount_type"/>
+                </td>
+      </xpath>
+      <xpath expr="//div[@class='col-xs-4 pull-right']//table[@class='table table-condensed']//tr[@class='border-black']" position="after">
+        <tr t-if="o.total_discount > 0.0 and o.origin.startswith('PO')" class="border-black">
+            <td><strong>Total Discount</strong></td>
+            <td class="text-right">
+                <span t-field="o.total_discount"
+                    t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+            </td>
+        </tr>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

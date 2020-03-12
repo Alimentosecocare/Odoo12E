@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+      <record id="group_order_global_discount_po" model="res.groups">
+          <field name="name">A Global Discount on Purchase Order</field>
+          <field name="category_id" ref="base.module_category_hidden"/>
+      </record>
+
+      <record id="group_discount_purchase_line" model="res.groups">
+          <field name="name">Discount on Purchase Order Line</field>
+          <field name="category_id" ref="base.module_category_hidden"/>
+      </record>
+</odoo>
