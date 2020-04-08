@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="product_template_only_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.only.form.view.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="taxes_id" position="after">
+                <field name="subunits"/>
+            </field>
+            <xpath expr="//page/group[1]" position="after">
+                <div name="pricelist_ref" attrs="{'invisible': [('product_variant_count', '>', 1)]}">
+                    <separator string="Referencias de tarifas de ventas"/>
+                     <group name="pricelists_references">
+                        <field name="reference_list_price_ids" nolabel="1" mode="tree">
+                            <tree string="Pricelist References" editable="bottom">
+                                <field name="listprice_id"/>
+                                <field name="tax_ids" widget="many2many_tags"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="subunits"/>
+                                <field name="price_unit" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_unit" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            </tree>
+                        </field>
+                    </group>
+                </div>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="create_update_reference_pricelist"
+                        type="object"
+                        string="Actuaizar referencias de precios"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('product_variant_count', '>', 1)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+     <record id="product_normal_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.normal.form.view.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <field name="taxes_id" position="after">
+                <field name="subunits"/>
+            </field>
+            <xpath expr="//page/group[1]" position="after">
+                <div name="pricelist_ref">
+                    <separator string="Referencias de tarifas de ventas"/>
+                     <group name="pricelists_references">
+                        <field name="reference_list_price_ids" nolabel="1" mode="tree">
+                            <tree string="Pricelist References" editable="bottom">
+                                <field name="listprice_id"/>
+                                <field name="tax_ids" widget="many2many_tags"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="subunits"/>
+                                <field name="price_unit" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_unit" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            </tree>
+                        </field>
+                    </group>
+                </div>
+
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="create_update_reference_pricelist"
+                                type="object"
+                                string="Actuaizar referencias de precios"
+                                class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_update_pricelistref" model="ir.actions.server">
+        <field name="name">Actualizar Referencia de Precios</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="binding_model_id" ref="model_product_product"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                records.create_update_reference_pricelist()
+        </field>
+    </record>
+
+    <record id="action_update_pricelistref_ptempl" model="ir.actions.server">
+        <field name="name">Actualizar Referencia de Precios</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="binding_model_id" ref="model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                records.mapped('product_variant_id').create_update_reference_pricelist()
+        </field>
+    </record>
+
+</odoo>
