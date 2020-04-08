@@ -39,7 +39,8 @@ class Pricelist(models.Model):
     @api.multi
     def create_update_reference_pricelist_pdct(self, product):
         for record in self:
-            if record in product.reference_list_price_ids.mapped('listprice_id').filtered(lambda l:l.company_id == record.company_id):
+            if record in product.reference_list_price_ids.mapped('listprice_id').filtered(
+                    lambda l:l.company_id == record.company_id):
                 self.update_unlink_reference(product, record)
             else:
                 self.create_reference(product, record)
@@ -54,7 +55,7 @@ class Pricelist(models.Model):
             references = product.mapped('reference_list_price_ids').filtered(
                 lambda r: r.listprice_id == pricelist)
             item = price_rule[product.id][1]
-            if not item in pricelist.item_ids.ids:
+            if pricelist.item_ids and not item in pricelist.item_ids.ids:
                 references.unlink()
             else:
                 for ref in references:
@@ -64,6 +65,15 @@ class Pricelist(models.Model):
 
     @api.model
     def create_reference(self, product, pricelist):
+        price = product.list_price
+        if not pricelist.item_ids:
+            reference_pl = self.env.get('reference.price.list').sudo().create({
+                'listprice_id': pricelist.id,
+                'product_id': product.id,
+                'product_tmpl_id': product.product_tmpl_id.id,
+                'price': price,
+                'company_id': pricelist.company_id.id
+            })
         price_rule = pricelist._compute_price_rule([(product, 1.0, self.env.get('res.partner'))])
         if price_rule:
             item = price_rule[product.id][1]
