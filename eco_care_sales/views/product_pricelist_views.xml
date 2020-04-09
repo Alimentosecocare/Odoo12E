@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_pricelist_view_inherit" model="ir.ui.view">
+            <field name="name">product.pricelist.view.inherit</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet[1]" position="before">
+                     <header>
+                        <button name="create_update_reference_pricelist"
+                                type="object"
+                                string="Actualizar Referencias de Precios"
+                                class="oe_highlight"/>
+                     </header>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_update_pricelistref_2pdct" model="ir.actions.server">
+        <field name="name">Actualizar Referencia de Precios</field>
+        <field name="model_id" ref="model_product_pricelist"/>
+        <field name="binding_model_id" ref="model_product_pricelist"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                records.create_update_reference_pricelist()
+        </field>
+    </record>
+
+    </data>
+</odoo>
