@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+from itertools import chain
+
+from odoo import api, fields, models, tools, _
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools import float_repr
+
+from odoo.addons import decimal_precision as dp
+
+from odoo.tools import pycompat
+
+
+class ResPArtner(models.Model):
+    _inherit= "res.partner"
+
+    vat = fields.Char(required=True)
+
+    _sql_constraints = [
+        ('name_country_vat_uid_unique',
+         'unique (vat, country_id)', 'El RUT debe ser ùnico para un socio del mismo país'),
+    ]
