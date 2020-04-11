@@ -15,7 +15,7 @@ from odoo.tools import pycompat
 class ResPArtner(models.Model):
     _inherit= "res.partner"
 
-    vat = fields.Char(required=True)
+    vat = fields.Char(required=True, copy=False)
 
     # _sql_constraints = [
     #     ('name_country_vat_uid_unique',
