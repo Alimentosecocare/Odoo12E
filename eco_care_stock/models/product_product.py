@@ -19,4 +19,4 @@ class ProductProduct(models.Model):
         if self.env.user.has_group('eco_care_stock.group_res_default_code') \
                 and self.default_code:
             if self.search([('default_code', '=', self.default_code)]) - self:
-                raise ValidationError(_('La referencia del product debe ser única'))
+                raise ValidationError(_('La referencia del producto debe ser única'))

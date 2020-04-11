@@ -26,4 +26,4 @@ class ResPArtner(models.Model):
     def only_vat_country(self):
         if self.search([('vat', '=', self.vat),
                         ('country_id', '=', self.country_id.id)]) - self:
-            raise ValidationError(_('El RUT debe ser ùnico para un socio del mismo país'))
+            raise ValidationError(_('El RUT debe ser único para un socio del mismo país'))

@@ -7,5 +7,5 @@ from odoo import api, fields, models
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
-    group_res_default_code = fields.Boolean("Solo una Referencia Interna",
+    group_res_default_code = fields.Boolean("Usar referencias únicas",
                                             implied_group='eco_care_stock.group_res_default_code')
