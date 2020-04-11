@@ -17,7 +17,13 @@ class ResPArtner(models.Model):
 
     vat = fields.Char(required=True)
 
-    _sql_constraints = [
-        ('name_country_vat_uid_unique',
-         'unique (vat, country_id)', 'El RUT debe ser ùnico para un socio del mismo país'),
-    ]
+    # _sql_constraints = [
+    #     ('name_country_vat_uid_unique',
+    #      'unique (vat, country_id)', 'El RUT debe ser ùnico para un socio del mismo país'),
+    # ]
+
+    @api.constrains('vat', 'country_id')
+    def only_vat_country(self):
+        if self.search([('vat', '=', self.vat),
+                        ('country_id', '=', self.country_id.id)]) - self:
+            raise ValidationError(_('El RUT debe ser ùnico para un socio del mismo país'))
