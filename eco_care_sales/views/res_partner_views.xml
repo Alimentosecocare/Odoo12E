@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="res_partner_form_view_exclusive_product" model="ir.ui.view">
+            <field name="name">res.partner.exclusive.product</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <group name="sale" position="inside">
+                    <field string="Exclusive Products" name="exclusive_product_ids" widget="many2many_tags" />
+                </group>
+            </field>
+        </record>
+</odoo>

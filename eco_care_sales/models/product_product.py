@@ -15,10 +15,24 @@ class ProductTemplate(models.Model):
     reference_list_price_ids = fields.One2many('reference.price.list',
                                               related='product_variant_id.reference_list_price_ids')
 
+    exclusive_partner_ids = fields.Many2many(
+        'res.partner', 'product_template_exclusive_partner_rel', 'product_tmpl_id', 'partner_id',
+        string='Exclusive Partners'
+        )
+    exclusive_ok = fields.Boolean(string="Is Exclusive", compute="_compute_exclusive_ok", store=True)
+
+    @api.multi
+    @api.depends('exclusive_partner_ids')
+    def _compute_exclusive_ok(self):
+        for record in self:
+            record.exclusive_ok = len(record.exclusive_partner_ids) > 0
+
+
     @api.multi
     def create_update_reference_pricelist(self):
         for record in self:
             record.product_variant_id.create_update_reference_pricelist()
+
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
