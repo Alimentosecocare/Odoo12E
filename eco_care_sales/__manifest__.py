@@ -17,6 +17,8 @@
     "data": [
         "views/product_template_views.xml",
         "views/product_pricelist_views.xml",
+        "views/res_partner_views.xml",
+        "views/sale_order_views.xml",
         'security/ir.model.access.csv',
     ],
     "installable": True,
