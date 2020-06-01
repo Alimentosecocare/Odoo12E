@@ -39,7 +39,7 @@ msgstr "Productos Exclusivos"
 #. module: eco_care_sales
 #: model_terms:ir.ui.view,arch_db:eco_care_sales.product_template_form_view_exclusive_partner
 msgid "Exclusive For"
-msgstr "Esclusivo Para"
+msgstr "Exclusivo Para"
 
 
 

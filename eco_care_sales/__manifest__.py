@@ -19,6 +19,7 @@
         "views/product_pricelist_views.xml",
         "views/res_partner_views.xml",
         "views/sale_order_views.xml",
+        "wizard/sale_request_views.xml",
         'security/ir.model.access.csv',
     ],
     "installable": True,
