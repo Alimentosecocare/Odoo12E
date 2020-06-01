@@ -20,18 +20,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: eco_care_sales
-#: model:ir.model.fields,field_description:eco_care_sales.field_product_template_exclusive_partner_ids
+#: model:ir.model.fields,field_description:eco_care_sales.field_product_template__exclusive_partner_ids
 msgid "Exclusive Partners"
 msgstr "Clientes Exclusivos"
 
 #. module: eco_care_sales
-#: model:ir.model.fields,field_description:eco_care_sales.field_product_template_exclusive_ok
+#: model:ir.model.fields,field_description:eco_care_sales.field_product_template__exclusive_ok
 #: model_terms:ir.ui.view,arch_db:eco_care_sales.product_template_search_view_exclusive
 msgid "Is Exclusive"
 msgstr "Es Exclusivo"
 
 #. module: eco_care_sales
-#: model:ir.model.fields,field_description:eco_care_sales.field_res_partner_exclusive_product_ids
+#: model:ir.model.fields,field_description:eco_care_sales.field_res_partner__exclusive_product_ids
 #: model_terms:ir.ui.view,arch_db:eco_care_sales.res_partner_form_view_exclusive_product
 msgid "Exclusive Products"
 msgstr "Productos Exclusivos"
@@ -43,7 +43,239 @@ msgstr "Exclusivo Para"
 
 
 
+#. module: eco_care_sales
+#: model:ir.model,name:eco_care_sales.model_sale_order_request
+msgid "Sale Order Request"
+msgstr "Solicitud de Venta"
 
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__date
+msgid "Request Date"
+msgstr "Fecha de la Solicitud"
 
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__state
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: eco_care_sales
+#: selection:sale.order.request,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: eco_care_sales
+#: selection:sale.order.request,state:0
+msgid "In Progress"
+msgstr "En proceso"
+
+#. module: eco_care_sales
+#: selection:sale.order.request,state:0
+msgid "Validated"
+msgstr "Realizado"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__line_ids
+msgid "Requests"
+msgstr "Solicitudes"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__total_qty
+msgid "Total Quantity"
+msgstr "Cantidades Totales"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__category_ids
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,help:eco_care_sales.field_sale_order_request_category__ids
+msgid "Specify Product Category to focus your request on a particular Category."
+msgstr "Especifique la Categoría de producto a tener en cuenta para la solicitud en una categoría en particular"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__product_id
+msgid "Requested Product"
+msgstr "Producto Solicitado"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,help:eco_care_sales.field_sale_order_request__product_id
+msgid "Specify Product to focus your request on a particular Product."
+msgstr "Especifique el producto a tener en cuenta para la solicitud en una producto en particular"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__filter
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Request of"
+msgstr "Solicitud de"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,help:eco_care_sales.field_sale_order_request__filter
+msgid ""
+"If you do an entire request, you can choose 'All Products' and it will "
+"prefill the request with the current stock.  If you only do some products  "
+"(e.g. Cycle Counting) you can choose 'Manual Selection of Products' and the "
+"system won't propose anything.  You can also let the system propose for a "
+"single product"
+msgstr ""
+"Si desea realizar una solicitud completa, puede elegir 'Todos los Productos' y podrá "
+"elaborar la solicitud con los productos existentes.  Si sólo desea algunos productos  "
+"(ej.. Contador Cíclico) puede eligir 'Selección manual de los Productos' y el "
+"sistema no le realizará ninguna propuesta.  También puede dejar que el sistema le "
+"realize proposiciones para un simple producto"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__partner_id
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__customer_id
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__request_partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,help:eco_care_sales.field_sale_order_request__partner_id
+msgid "Specify Customer to focus your Request on a particular Customer."
+msgstr "Especifique el cliente a tener en cuenta para la solicitud en un cliente en particular"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__pricelist_id
+msgid "Pricelist"
+msgstr "Tarifa"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,help:eco_care_sales.field_sale_order_request__pricelist_id
+msgid "Pricelist for the quotation order."
+msgstr "Tarifa para el Presupuesto de Venta"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__company_id
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request__exclusive
+msgid "Include Exclusive Products"
+msgstr "Incluir los Productos Exclusivos"
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:85
+#, python-format
+msgid "All products"
+msgstr "Todos los productos"
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:86
+#, python-format
+msgid "One or more product category"
+msgstr "Una o mas cat4gorías de productos"
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:87
+#, python-format
+msgid "One product only"
+msgstr "Un producto solamente"
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:88
+#, python-format
+msgid "Select products manually"
+msgstr "Seleccionar el producto manualmente"
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:89
+#, python-format
+msgid "One o more previously saled products for a specific cliente"
+msgstr "Uno o más productos previamente vendidos a un cliente en específico"
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:163
+#, python-format
+msgid "A customer is required for create a Quotations"
+msgstr "Un cliente es necesario para crear el Presupuesto de Venta."
+
+#. module: eco_care_sales
+#: code:addons/eco_care_sales/wizard/sale_request.py:180
+#, python-format
+msgid "Quotation"
+msgstr "Presupuesto de Venta"
+
+#. module: eco_care_sales
+#: model:ir.model,name:eco_care_sales.model_sale_order_request_line
+msgid "Sale Order Request Line"
+msgstr "Línea de Solicitud de Venta"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__request_id
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+#: model:ir.ui.menu,name:eco_care_sales.sale_order_request_menu
+msgid "Request"
+msgstr "Solicitud"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__product_uom_id
+msgid "Product Unit of Measure"
+msgstr "Unidad de medida del producto"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__product_uom_category_id
+msgid "Uom category"
+msgstr "Categoría de la UdM"
+
+#. module: eco_care_sales
+#: model:ir.model.fields,field_description:eco_care_sales.field_sale_order_request_line__product_qty
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Requested Quantity"
+msgstr "Cantidad Solicitada"
+
+#. module: eco_care_sales
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Suggest"
+msgstr "Sugerir"
+
+#. module: eco_care_sales
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: eco_care_sales
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Suggest Again"
+msgstr "Volver a Sugerir"
+
+#. module: eco_care_sales
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Request Details"
+msgstr "Detalle de la Solicitud"
+
+#. module: eco_care_sales
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "UoM"
+msgstr "UdM"
+
+#. module: eco_care_sales
+#: model_terms:ir.ui.view,arch_db:eco_care_sales.sale_order_request_view_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: eco_care_sales
+#: model_terms:ir.actions.act_window,help:eco_care_sales.sale_order_request_action
+msgid "Create a new sale request"
+msgstr "Cree una nueva solicitud de venta."
+
+#. module: eco_care_sales
+#: model_terms:ir.actions.act_window,help:eco_care_sales.sale_order_request_action
+msgid "This is used to speed the introduction of requested product quantities on sale orders."
+msgstr "Esta opción es util para acelerar la introducción de los productos solicitados en las ordenes de venta."
 
 
